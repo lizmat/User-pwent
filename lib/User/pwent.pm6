@@ -29,7 +29,7 @@ class User::pwent:ver<0.0.1>:auth<cpan:ELIZABETH> {
     has     $.expire;
 }
 
-CHECK {  # add aliases for methods
+BEGIN {  # add aliases for methods
     User::pwent.^add_method('age',   User::pwent.^find_method('change'));
     User::pwent.^add_method('quota', User::pwent.^find_method('change'));
     User::pwent.^add_method('class', User::pwent.^find_method('comment'));
