@@ -1,9 +1,7 @@
-[![Build Status](https://travis-ci.org/lizmat/User-pwent.svg?branch=master)](https://travis-ci.org/lizmat/User-pwent)
-
 NAME
 ====
 
-User::pwent - Port of Perl 5's User::pwent
+User::pwent - Port of Perl's User::pwent
 
 SYNOPSIS
 ========
@@ -36,7 +34,7 @@ The `getpw` function is a simple front-end that forwards a numeric argument to `
 PORTING CAVEATS
 ===============
 
-The `pw_has` function has not been ported because there's currently no way to find the needed information in the Perl 6 equivalent of `Config`.
+The `pw_has` function has not been ported because there's currently no way to find the needed information in the Raku equivalent of `Config`.
 
 AUTHOR
 ======
@@ -48,9 +46,9 @@ Source can be located at: https://github.com/lizmat/User-pwent . Comments and Pu
 COPYRIGHT AND LICENSE
 =====================
 
-Copyright 2018 Elizabeth Mattijsen
+Copyright 2018-2019 Elizabeth Mattijsen
 
-Re-imagined from Perl 5 as part of the CPAN Butterfly Plan.
+Re-imagined from Perl as part of the CPAN Butterfly Plan.
 
 This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
 

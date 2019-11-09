@@ -16,7 +16,7 @@ our $pw_age   is export(:FIELDS) := $pw_change;
 our $pw_quota is export(:FIELDS) := $pw_change;
 our $pw_class is export(:FIELDS) := $pw_comment;
 
-class User::pwent:ver<0.0.1>:auth<cpan:ELIZABETH> {
+class User::pwent:ver<0.0.2>:auth<cpan:ELIZABETH> {
     has Str $.name;
     has Str $.passwd;
     has Int $.uid;
@@ -92,7 +92,7 @@ my constant &endpwent is export(:DEFAULT:FIELDS) = do {
 
 =head1 NAME
 
-User::pwent - Port of Perl 5's User::pwent
+User::pwent - Port of Perl's User::pwent
 
 =head1 SYNOPSIS
 
@@ -131,7 +131,7 @@ to C<getpwuid> and the rest to C<getpwnam>.
 =head1 PORTING CAVEATS
 
 The C<pw_has> function has not been ported because there's currently no way
-to find the needed information in the Perl 6 equivalent of C<Config>.
+to find the needed information in the Raku equivalent of C<Config>.
 
 =head1 AUTHOR
 
@@ -142,9 +142,9 @@ Pull Requests are welcome.
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2018 Elizabeth Mattijsen
+Copyright 2018-2019 Elizabeth Mattijsen
 
-Re-imagined from Perl 5 as part of the CPAN Butterfly Plan.
+Re-imagined from Perl as part of the CPAN Butterfly Plan.
 
 This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
 
