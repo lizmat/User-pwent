@@ -3,8 +3,8 @@ Revision history for User-pwent
 {{$NEXT}}
 
 0.0.2  2019-11-09T22:53:05+01:00
-    - changed Perl 6 to Raku, and Perl 5 to Perl
-    - upped P5getpwnam dependency to 0.0.6
+    - Changed Perl 6 to Raku, and Perl 5 to Perl
+    - Upped P5getpwnam dependency to 0.0.6
 
 0.0.1  2018-05-23T13:55:29+02:00
     - Initial version
