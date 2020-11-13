@@ -7,3 +7,4 @@
 .precomp/
 /releases/
 /User-pwent-*
+/lib/P5getpwnam.pm6

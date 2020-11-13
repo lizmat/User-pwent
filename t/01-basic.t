@@ -1,4 +1,4 @@
-use v6.c;
+use v6.*;
 use Test;
 
 plan 25;
@@ -20,4 +20,4 @@ plan 25;
     }
 }
 
-# vim: ft=perl6 expandtab sw=4
+# vim: expandtab shiftwidth=4

@@ -1,4 +1,4 @@
-use v6.c;
+use v6.*;
 use Test;
 use User::pwent;
 
@@ -43,4 +43,4 @@ is getpwuid(9999), Nil, 'non-existing uid';
 is getpw(+$*USER).name, ~$*USER, 'does int lookup give name';
 is getpw(~$*USER).uid,  +$*USER, 'does name lookup give int';
 
-# vim: ft=perl6 expandtab sw=4
+# vim: expandtab shiftwidth=4

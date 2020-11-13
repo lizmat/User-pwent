@@ -1,7 +1,7 @@
 NAME
 ====
 
-User::pwent - Port of Perl's User::pwent
+Raku port of Perl's User::pwent module
 
 SYNOPSIS
 ========
@@ -25,6 +25,8 @@ SYNOPSIS
 DESCRIPTION
 ===========
 
+This module tries to mimic the behaviour of Perl's `User::pwent` module as closely as possible in the Raku Programming Language.
+
 This module's exports `getpwent`, `getpwuid`, and `getpwnam` functions that return `User::pwent` objects. This object has methods that return the similarly named structure field name from the C's passwd structure from pwd.h, stripped of their leading "pw_" parts, namely name, passwd, uid, gid, change, age, quota, comment, class, gecos, dir, shell, and expire.
 
 You may also import all the structure fields directly into your namespace as regular variables using the :FIELDS import tag. Access these fields as variables named with a preceding pw_ in front their method names. Thus, $passwd_obj.shell corresponds to $pw_shell if you import the fields.
@@ -34,7 +36,15 @@ The `getpw` function is a simple front-end that forwards a numeric argument to `
 PORTING CAVEATS
 ===============
 
+Not possible to port pw_has
+---------------------------
+
 The `pw_has` function has not been ported because there's currently no way to find the needed information in the Raku equivalent of `Config`.
+
+Probably not on Windows
+-----------------------
+
+This module depends on the availability of POSIX semantics. This is generally not available on Windows, so this module will probably not work on Windows.
 
 AUTHOR
 ======
@@ -46,7 +56,7 @@ Source can be located at: https://github.com/lizmat/User-pwent . Comments and Pu
 COPYRIGHT AND LICENSE
 =====================
 
-Copyright 2018-2019 Elizabeth Mattijsen
+Copyright 2018-2020 Elizabeth Mattijsen
 
 Re-imagined from Perl as part of the CPAN Butterfly Plan.
 

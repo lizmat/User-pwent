@@ -1,4 +1,4 @@
-use v6.c;
+use v6.*;
 
 our $pw_name    is export(:FIELDS);
 our $pw_passwd  is export(:FIELDS);
@@ -16,7 +16,7 @@ our $pw_age   is export(:FIELDS) := $pw_change;
 our $pw_quota is export(:FIELDS) := $pw_change;
 our $pw_class is export(:FIELDS) := $pw_comment;
 
-class User::pwent:ver<0.0.2>:auth<cpan:ELIZABETH> {
+class User::pwent:ver<0.0.3>:auth<cpan:ELIZABETH> {
     has Str $.name;
     has Str $.passwd;
     has Int $.uid;
@@ -66,15 +66,18 @@ sub populate(@fields) {
 }
 
 my sub getpwnam(Str() $name) is export(:DEFAULT:FIELDS) {
-    use P5getpwnam; populate(getpwnam($name))
+    use P5getpwnam:ver<0.0.9>:auth<cpan:ELIZABETH>;
+    populate(getpwnam($name))
 }
 
 my sub getpwuid(Int() $uid) is export(:DEFAULT:FIELDS) {
-    use P5getpwnam; populate(getpwuid($uid))
+    use P5getpwnam:ver<0.0.9>:auth<cpan:ELIZABETH>;
+    populate(getpwuid($uid))
 }
 
 my sub getpwent() is export(:DEFAULT:FIELDS) {
-    use P5getpwnam; populate(getpwent)
+    use P5getpwnam:ver<0.0.9>:auth<cpan:ELIZABETH>;
+    populate(getpwent)
 }
 
 my proto sub getpw(|) is export(:DEFAULT:FIELDS) {*}
@@ -82,17 +85,19 @@ my multi sub getpw(Int:D $uid) is export(:DEFAULT:FIELDS) { getpwuid($uid) }
 my multi sub getpw(Str:D $nam) is export(:DEFAULT:FIELDS) { getpwnam($nam) }
 
 my constant &setpwent is export(:DEFAULT:FIELDS) = do {
-    use P5getpwnam; &setpwent
+    use P5getpwnam:ver<0.0.9>:auth<cpan:ELIZABETH>;
+    &setpwent
 }
 my constant &endpwent is export(:DEFAULT:FIELDS) = do {
-    use P5getpwnam; &endpwent
+    use P5getpwnam:ver<0.0.9>:auth<cpan:ELIZABETH>;
+    &endpwent
 }
 
 =begin pod
 
 =head1 NAME
 
-User::pwent - Port of Perl's User::pwent
+Raku port of Perl's User::pwent module
 
 =head1 SYNOPSIS
 
@@ -114,6 +119,9 @@ User::pwent - Port of Perl's User::pwent
 
 =head1 DESCRIPTION
 
+This module tries to mimic the behaviour of Perl's C<User::pwent> module
+as closely as possible in the Raku Programming Language.
+
 This module's exports C<getpwent>, C<getpwuid>, and C<getpwnam> functions
 that return C<User::pwent> objects. This object has methods that return the
 similarly named structure field name from the C's passwd structure from pwd.h,
@@ -130,8 +138,16 @@ to C<getpwuid> and the rest to C<getpwnam>.
 
 =head1 PORTING CAVEATS
 
+=head2 Not possible to port pw_has
+
 The C<pw_has> function has not been ported because there's currently no way
 to find the needed information in the Raku equivalent of C<Config>.
+
+=head2 Probably not on Windows
+
+This module depends on the availability of POSIX semantics.  This is
+generally not available on Windows, so this module will probably not work
+on Windows.
 
 =head1 AUTHOR
 
@@ -142,7 +158,7 @@ Pull Requests are welcome.
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2018-2019 Elizabeth Mattijsen
+Copyright 2018-2020 Elizabeth Mattijsen
 
 Re-imagined from Perl as part of the CPAN Butterfly Plan.
 
@@ -150,4 +166,4 @@ This library is free software; you can redistribute it and/or modify it under th
 
 =end pod
 
-# vim: ft=perl6 expandtab sw=4
+# vim: expandtab shiftwidth=4
