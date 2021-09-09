@@ -16,7 +16,7 @@ our $pw_age   is export(:FIELDS) := $pw_change;
 our $pw_quota is export(:FIELDS) := $pw_change;
 our $pw_class is export(:FIELDS) := $pw_comment;
 
-class User::pwent:ver<0.0.3>:auth<cpan:ELIZABETH> {
+class User::pwent:ver<0.0.4>:auth<zef:lizmat> {
     has Str $.name;
     has Str $.passwd;
     has Int $.uid;
@@ -66,17 +66,17 @@ sub populate(@fields) {
 }
 
 my sub getpwnam(Str() $name) is export(:DEFAULT:FIELDS) {
-    use P5getpwnam:ver<0.0.9>:auth<cpan:ELIZABETH>;
+    use P5getpwnam:ver<0.0.10>:auth<zef:lizmat>;
     populate(getpwnam($name))
 }
 
 my sub getpwuid(Int() $uid) is export(:DEFAULT:FIELDS) {
-    use P5getpwnam:ver<0.0.9>:auth<cpan:ELIZABETH>;
+    use P5getpwnam:ver<0.0.10>:auth<zef:lizmat>;
     populate(getpwuid($uid))
 }
 
 my sub getpwent() is export(:DEFAULT:FIELDS) {
-    use P5getpwnam:ver<0.0.9>:auth<cpan:ELIZABETH>;
+    use P5getpwnam:ver<0.0.10>:auth<zef:lizmat>;
     populate(getpwent)
 }
 
@@ -85,11 +85,11 @@ my multi sub getpw(Int:D $uid) is export(:DEFAULT:FIELDS) { getpwuid($uid) }
 my multi sub getpw(Str:D $nam) is export(:DEFAULT:FIELDS) { getpwnam($nam) }
 
 my constant &setpwent is export(:DEFAULT:FIELDS) = do {
-    use P5getpwnam:ver<0.0.9>:auth<cpan:ELIZABETH>;
+    use P5getpwnam:ver<0.0.10>:auth<zef:lizmat>;
     &setpwent
 }
 my constant &endpwent is export(:DEFAULT:FIELDS) = do {
-    use P5getpwnam:ver<0.0.9>:auth<cpan:ELIZABETH>;
+    use P5getpwnam:ver<0.0.10>:auth<zef:lizmat>;
     &endpwent
 }
 
@@ -151,14 +151,14 @@ on Windows.
 
 =head1 AUTHOR
 
-Elizabeth Mattijsen <liz@wenzperl.nl>
+Elizabeth Mattijsen <liz@raku.rocks>
 
 Source can be located at: https://github.com/lizmat/User-pwent . Comments and
 Pull Requests are welcome.
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2018-2020 Elizabeth Mattijsen
+Copyright 2018, 2019, 2020, 2021 Elizabeth Mattijsen
 
 Re-imagined from Perl as part of the CPAN Butterfly Plan.
 

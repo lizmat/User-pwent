@@ -2,6 +2,13 @@ Revision history for User-pwent
 
 {{$NEXT}}
 
+0.0.4  2021-09-09T21:09:43+02:00
+    - Change file extension to .rakumod
+    - Migrate to zef ecosystem
+    - Update email address
+    - Update copyright year
+    - Updated dependency
+
 0.0.3  2020-11-13T13:12:16+01:00
     - Change name of distribution
     - Force to highest possible Raku version
